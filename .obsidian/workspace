@@ -1,0 +1,92 @@
+{
+  "main": {
+    "id": "575352c8597a4cf4",
+    "type": "split",
+    "children": [
+      {
+        "id": "82edbdd353a21dbc",
+        "type": "leaf",
+        "state": {
+          "type": "image",
+          "state": {
+            "file": "wiki/resources/Battle_City_Tank_Enemy1.png"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "e7fdfae588272a52",
+    "type": "split",
+    "children": [
+      {
+        "id": "295a258be737f189",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "02890957d8a01653",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "1620035e9810ed88",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "ee79fed810267a55",
+    "type": "split",
+    "children": [
+      {
+        "id": "c81483d63bf64a40",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "257721ca9093f614",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "wiki/resources/Battle_City_Tank_Enemy1.png",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "82edbdd353a21dbc",
+  "lastOpenFiles": [
+    "Battle_City_Tank_Enemy1.png"
+  ]
+}
