@@ -4,10 +4,10 @@ export var bullet : PackedScene
 export var hp := 1
 export var speed := 16.0
 
-var move_size
-var tile_size = 64
+var move_size : int
+var tile_size : int
 var moving := false
-
+var current_direction : Vector2
 
 onready var collision_detector = $Body/CollisionDetector
 onready var body = $Body
@@ -19,8 +19,7 @@ func _ready() -> void:
 	move_size = tile_size / 4
 	_snap_position()
 
-
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	
 	var _direction : Vector2 
 	
@@ -29,6 +28,8 @@ func _physics_process(delta):
 	
 	
 	if _direction and not(_direction.x and _direction.y):
+		
+		current_direction = _direction
 		
 		body.look_at(global_position + _direction)
 		animation_tree.set("parameters/blend_position", _direction)
@@ -40,10 +41,10 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		var _new_bullet = bullet.instance()
 		_new_bullet.global_position = canon.global_position
-		_new_bullet.set_direction(_direction)
+		_new_bullet.set_direction(current_direction)
 		get_parent().add_child(_new_bullet)
 
-func _move(dir):
+func _move(dir) -> void:
 	if dir == Vector2.ZERO:
 		return
 	
@@ -61,7 +62,7 @@ func _move(dir):
 	
 	$Tween.start()
 
-func _on_Tween_tween_all_completed():
+func _on_Tween_tween_all_completed() -> void:
 	moving = false
 
 func _snap_position() -> void:
