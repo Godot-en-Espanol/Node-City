@@ -1,54 +1,63 @@
 extends Area2D
 
-export var move_size := 8
 export var bullet : PackedScene
+export var hp := 1
+export var speed := 80
+
+const MOVE_SIZE := 8
+const RAYCAST_SIZE := MOVE_SIZE - 1 + 32
 
 var tile_size = 64
 var moving := false
-onready var ray = $RayCast2D
+
+onready var body = $Body
+onready var canon = $Body/Canon
+onready var raycast_right = $Body/RayCastRight
+onready var raycast_left = $Body/RayCastLeft
 
 func _ready():
 	position = position.snapped(Vector2.ONE * tile_size)
 	position += Vector2.ONE * tile_size/2
-	move_size = tile_size/4
-
-func _physics_process(delta):
-	var _dir = Vector2.ZERO
+	raycast_left.cast_to.y = -RAYCAST_SIZE
+	raycast_right.cast_to.y = -RAYCAST_SIZE
 	
-	if not moving:
-		if Input.is_action_pressed("ui_right"):
-			_move(Vector2.RIGHT)
-			$icon.rotation_degrees = 90
-		if Input.is_action_pressed("ui_left"):
-			_move(Vector2.LEFT)
-			$icon.rotation_degrees = -90
-		if Input.is_action_pressed("ui_down"):
-			_move(Vector2.DOWN)
-			$icon.rotation_degrees = 180
-		if Input.is_action_pressed("ui_up"):
-			_move(Vector2.UP)
-			$icon.rotation_degrees = 0
+func _physics_process(delta):
+	var _x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	var _y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	
+	if _x == 0 or _y == 0:
+		body.look_at(global_position + Vector2(- _y, _x))
+		if !moving:
+			_move(Vector2(_x, _y))
+	
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		var _new_bullet = bullet.instance()
-		_new_bullet.global_position = $icon/Canon.global_position
-		_new_bullet.set_direction(position.direction_to($icon/Canon.global_position))
+		_new_bullet.global_position = canon.global_position
+		_new_bullet.set_direction(position.direction_to(canon.global_position))
 		get_parent().add_child(_new_bullet)
 
 func _move(dir):
-	ray.cast_to = dir * 32
-	ray.force_raycast_update()
-	
-	if ray.is_colliding(): 
+	if dir == Vector2.ZERO:
 		return
+	
+	raycast_right.force_raycast_update()
+	raycast_left.force_raycast_update()
+	
+	if raycast_right.is_colliding() or raycast_left.is_colliding(): 
+		return
+	
 	moving = true
-	var _time = 0.2
-	var _new_position = position + dir * move_size
+	
+	var _time = MOVE_SIZE / speed
+	var _new_position = position + dir * MOVE_SIZE
 	
 	$Tween.interpolate_property( self, "position",
 								position, _new_position, _time,
 								Tween.TRANS_LINEAR)
 	
 	$Tween.start()
-	yield($Tween, "tween_completed")
+
+
+func _on_Tween_tween_all_completed():
 	moving = false

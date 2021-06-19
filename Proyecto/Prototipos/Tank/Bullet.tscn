@@ -8,6 +8,7 @@ extents = Vector2( 8, 8 )
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource( 2 )
+speed = 500
 
 [node name="icon" type="Sprite" parent="."]
 self_modulate = Color( 0.513726, 0.0509804, 0.0509804, 1 )

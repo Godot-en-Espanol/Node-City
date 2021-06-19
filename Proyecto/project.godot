@@ -14,6 +14,10 @@ config/name="Proyecto"
 run/main_scene="res://Prototipos/Prototipo.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/stretch/mode="2d"
+
 [physics]
 
 common/enable_pause_aware_picking=true
