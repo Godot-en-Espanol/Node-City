@@ -34,5 +34,5 @@ container_path = NodePath("../YSort")
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="PlayerTank" parent="." instance=ExtResource( 2 )]
+[node name="PlayerTank" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 749, 399 )

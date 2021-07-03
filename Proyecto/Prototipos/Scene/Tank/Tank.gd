@@ -28,22 +28,31 @@ func shoot() -> void:
 	_new_bullet.init(current_direction, canon.position.y)
 	get_parent().add_child(_new_bullet)
 
-func _move(dir : Vector2) -> void:
-	if dir == Vector2.ZERO:
-		return
-	
+func change_direction(direction : Vector2) -> void:
+	print(direction)
+	current_direction = direction
+	_update_rotation()
+	_update_animation()
+
+func move_foward() -> void:
 	if collision_detector.is_colliding():
 		return
 	
 	moving = true
 	
 	var _time = move_size / speed
-	var _new_position = position + dir * move_size
+	var _new_position = position + current_direction * move_size
 	
 	tween.interpolate_property( self, "position",
 								position, _new_position, _time)
 	
 	tween.start()
+
+func _update_rotation() -> void:
+	body.look_at(body.global_position + current_direction)
+
+func _update_animation() -> void:
+	animation_tree.set("parameters/blend_position", current_direction)
 
 func _on_Tween_tween_all_completed() -> void:
 	moving = false
