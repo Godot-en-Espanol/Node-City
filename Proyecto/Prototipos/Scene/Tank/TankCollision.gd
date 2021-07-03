@@ -1,10 +1,10 @@
 extends Node2D
 
-func _ready():
+func _ready() -> void:
 	update_ray_size()
 
 func update_ray_size() -> void:
-	var move_size = ProjectSettings.get("game_info/tile_size") / 4
+	var move_size : int = ProjectSettings.get("game_info/tile_size") / 4
 	
 	for ray in get_children():
 		ray.cast_to.x = move_size - 1

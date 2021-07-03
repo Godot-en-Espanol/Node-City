@@ -1,9 +1,10 @@
 extends StaticBody2D
 
-var life = 2
+var life := 2
 
-func destroy():
+func destroy() -> void:
 	life -= 1
+	
 	if life <= 0:
 		queue_free()
 	else:
