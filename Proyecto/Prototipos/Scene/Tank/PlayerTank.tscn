@@ -4,6 +4,5 @@
 [ext_resource path="res://Prototipos/Scene/Controlers/PlayerControler.tscn" type="PackedScene" id=2]
 
 [node name="PlayerTank" instance=ExtResource( 1 )]
-speed = 200.0
 
 [node name="PlayerControler" parent="." index="6" instance=ExtResource( 2 )]

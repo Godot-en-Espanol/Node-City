@@ -1,17 +1,46 @@
 extends TankControler
 
-func _physics_process(_delta : float) -> void:
-	var _direction : Vector2 
+var input_array := []
+
+func _input(event : InputEvent):
 	
-	_direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	_direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	update_direction()
 	
-	if _direction and not(_direction.x and _direction.y):
-		
-		tank.change_direction(_direction) 
-		
-		if !tank.moving:
-			tank.move_foward()
-	
-	if Input.is_action_just_pressed("ui_accept"):
+	if event.is_action_pressed("shoot"):
 		tank.shoot()
+		
+func check_movement_input(input : String):
+	if Input.is_action_just_pressed(input):
+		if not input in input_array:
+			input_array.append(input)
+	if input in input_array and Input.is_action_just_released(input):
+		input_array.remove(input_array.find(input))
+
+func update_direction() -> void:
+	
+	var direction := Vector2.ZERO
+	check_movement_input("move_up")
+	check_movement_input("move_down")
+	check_movement_input("move_left")
+	check_movement_input("move_right")
+	
+	var last_action := ""
+	if input_array.size() > 0:
+		last_action = input_array[input_array.size()-1]
+	
+	tank.speed = tank.movement_speed
+	match last_action:
+		"move_down":
+			direction = Vector2.DOWN
+		"move_up":
+			direction = Vector2.UP
+		"move_left":
+			direction = Vector2.LEFT
+		"move_right":
+			direction = Vector2.RIGHT
+		_:
+			tank.speed = 0
+			
+	if direction != Vector2.ZERO: 
+		tank.current_direction = direction
+
