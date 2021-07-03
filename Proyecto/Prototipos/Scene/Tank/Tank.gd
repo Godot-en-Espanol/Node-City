@@ -20,8 +20,7 @@ func _ready() -> void:
 	move_size = tile_size / 4
 	_snap_position()
 
-func _physics_process(delta : float) -> void:
-	
+func _physics_process(_delta : float) -> void:
 	var _direction : Vector2 
 	
 	_direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -32,7 +31,7 @@ func _physics_process(delta : float) -> void:
 		
 		current_direction = _direction
 		
-		body.look_at(global_position + _direction)
+		body.look_at(body.global_position + _direction)
 		animation_tree.set("parameters/blend_position", _direction)
 		
 		if !moving:
