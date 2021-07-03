@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Prototipos/TileMap.gd" type="Script" id=1]
-[ext_resource path="res://Prototipos/Scene/Tank/Tank.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Prototipos/Scene/Tank/PlayerTank.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Prototipos/Scene/Brick/Brick.tscn" type="PackedScene" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
 
@@ -34,6 +34,5 @@ container_path = NodePath("../YSort")
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="Tank" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 744, 376 )
-speed = 200.0
+[node name="PlayerTank" parent="." instance=ExtResource( 2 )]
+position = Vector2( 749, 399 )

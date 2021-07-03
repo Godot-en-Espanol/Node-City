@@ -1,3 +1,4 @@
+class_name Tank
 extends Area2D
 
 export var bullet : PackedScene
@@ -20,26 +21,6 @@ func _ready() -> void:
 	tile_size = ProjectSettings.get("game_info/tile_size")
 	move_size = tile_size / 4
 	_snap_position()
-
-func _physics_process(_delta : float) -> void:
-	var _direction : Vector2 
-	
-	_direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	_direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	
-	
-	if _direction and not(_direction.x and _direction.y):
-		
-		current_direction = _direction
-		
-		body.look_at(body.global_position + _direction)
-		animation_tree.set("parameters/blend_position", _direction)
-		
-		if !moving:
-			_move(_direction)
-	
-	if Input.is_action_just_pressed("ui_accept"):
-		shoot()
 
 func shoot() -> void:
 	var _new_bullet = bullet.instance()

@@ -8,8 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "Tank",
+"language": "GDScript",
+"path": "res://Prototipos/Scene/Tank/Tank.gd"
+}, {
+"base": "Node2D",
+"class": "TankControler",
+"language": "GDScript",
+"path": "res://Prototipos/Scene/Controlers/Controler.gd"
+} ]
 _global_script_class_icons={
+"Tank": "",
+"TankControler": ""
 }
 
 [application]
