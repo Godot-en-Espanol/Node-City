@@ -22,6 +22,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("BulletPosition:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Left"
@@ -36,6 +48,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BulletPosition:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -44, -32 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -52,6 +76,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 2 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("BulletPosition:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 43, -32 ) ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "Up"
@@ -66,6 +102,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BulletPosition:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -73 ) ]
 }
 
 [sub_resource type="AnimationNodeAnimation" id=6]
@@ -122,8 +170,11 @@ position = Vector2( 32, -28 )
 enabled = true
 cast_to = Vector2( 40, 0 )
 
-[node name="Canon" type="Position2D" parent="Body"]
-position = Vector2( 32, 0 )
+[node name="BulletPosition" type="Position2D" parent="."]
+position = Vector2( 43, -32 )
+
+[node name="Canon" type="Position2D" parent="BulletPosition"]
+position = Vector2( 0, -18 )
 
 [node name="Tween" type="Tween" parent="."]
 playback_process_mode = 0

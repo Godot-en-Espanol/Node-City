@@ -12,7 +12,8 @@ var current_direction := Vector2.RIGHT
 onready var tween := $Tween
 onready var collision_detector := $Body/CollisionDetector
 onready var body := $Body
-onready var canon := $Body/Canon
+onready var bullet_position := $BulletPosition
+onready var canon := $BulletPosition/Canon
 onready var animation_tree := $AnimationPlayer/AnimationTree
 
 func _ready() -> void:
@@ -42,8 +43,8 @@ func _physics_process(_delta : float) -> void:
 
 func shoot() -> void:
 	var _new_bullet = bullet.instance()
-	_new_bullet.global_position = canon.global_position
-	_new_bullet.init(current_direction)
+	_new_bullet.global_position = bullet_position.global_position
+	_new_bullet.init(current_direction, canon.position.y)
 	get_parent().add_child(_new_bullet)
 
 func _move(dir : Vector2) -> void:
