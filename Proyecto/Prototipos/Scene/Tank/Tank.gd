@@ -37,6 +37,7 @@ func _snap_position() -> void:
 
 func _physics_process(_delta):
 	if current_direction != Vector2.ZERO and !moving:
+		print(speed)
 		move_foward()
 
 
@@ -71,6 +72,7 @@ func move_foward() -> void:
 								position, _new_position, _time)
 	
 	tween.start()
+	return
 
 func check_collision(_direction : Vector2) -> void:
 	var _can_move := false
