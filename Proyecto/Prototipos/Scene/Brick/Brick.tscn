@@ -4,7 +4,7 @@
 [ext_resource path="res://Prototipos/Scene/Brick/Brick.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 16 )
+extents = Vector2( 15, 15 )
 
 [node name="StaticBody2D" type="StaticBody2D"]
 collision_layer = 4

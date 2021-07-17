@@ -37,8 +37,13 @@ container_path = NodePath("../YSort")
 [node name="YSort" type="YSort" parent="."]
 
 [node name="BasicEnemy" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 131.115, 323.725 )
-collision_layer = 2
+position = Vector2( 793.875, 700.889 )
+
+[node name="BasicEnemy2" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 624.567, 739.845 )
+
+[node name="BasicEnemy3" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 615.577, 853.717 )
 
 [node name="PlayerTank" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 800.111, 416.33 )
+position = Vector2( 1186.43, 796.781 )
