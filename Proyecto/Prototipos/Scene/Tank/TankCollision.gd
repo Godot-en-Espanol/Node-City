@@ -9,9 +9,17 @@ func update_ray_size() -> void:
 	for ray in get_children():
 		ray.cast_to.x = move_size - 1
 
-func is_colliding() -> bool:
+func is_colliding(direction := Vector2.ZERO) -> bool:
+	var is_colliding := false
+	
+	if direction != Vector2.ZERO:
+		global_rotation = direction.angle()
+	
 	for ray in get_children():
 		ray.force_raycast_update()
 		if ray.is_colliding():
-			return true
-	return false
+			is_colliding = true
+	
+	rotation = 0
+	
+	return is_colliding

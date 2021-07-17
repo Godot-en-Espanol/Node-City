@@ -24,14 +24,7 @@ func _ready() -> void:
 	# warning-ignore:integer_division
 	move_size = tile_size / 4
 	_snap_position()
-
-
-func _update_rotation() -> void:
-	body.look_at(body.global_position + current_direction)
-
-
-func _update_animation() -> void:
-	animation_tree.set("parameters/blend_position", current_direction)
+	
 
 
 func _on_Tween_tween_all_completed() -> void:
@@ -57,8 +50,8 @@ func shoot() -> void:
 func change_direction(direction : Vector2) -> void:
 	current_direction = direction
 	if current_direction != Vector2.ZERO:
-		_update_rotation()
-		_update_animation()
+		body.look_at(body.global_position + current_direction)
+		animation_tree.set("parameters/blend_position", current_direction)
 
 
 func move_foward() -> void:
@@ -67,6 +60,7 @@ func move_foward() -> void:
 	
 	if collision_detector.is_colliding():
 		return
+	
 	moving = true
 	
 		
@@ -77,3 +71,7 @@ func move_foward() -> void:
 								position, _new_position, _time)
 	
 	tween.start()
+
+func check_collision(_direction : Vector2) -> void:
+	var _can_move := false
+	body.look_at(body.global_position + _direction)
