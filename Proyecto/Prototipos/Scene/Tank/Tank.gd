@@ -37,7 +37,6 @@ func _snap_position() -> void:
 
 func _physics_process(_delta):
 	if current_direction != Vector2.ZERO and !moving:
-		print(speed)
 		move_foward()
 
 

@@ -1,6 +1,12 @@
 extends TankControler
 
+export var min_time : float = 1.5
+export var max_time : float = 2.0
+
+var rng = RandomNumberGenerator.new()
 var _directions := [Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN]
+
+onready var timer := $Timer
 
 func _ready() -> void:
 	yield(tank,"ready")
@@ -21,4 +27,8 @@ func _choose_new_direction()-> Vector2:
 	posibles_directions.shuffle()
 	
 	return posibles_directions[0]
-	
+
+func _on_Timer_timeout():
+	tank.shoot()
+	tank.current_direction = _choose_new_direction()
+	timer.start()
