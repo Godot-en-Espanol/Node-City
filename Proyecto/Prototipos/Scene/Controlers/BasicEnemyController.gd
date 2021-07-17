@@ -29,6 +29,5 @@ func _choose_new_direction()-> Vector2:
 	return posibles_directions[0]
 
 func _on_Timer_timeout():
-	tank.shoot()
 	tank.current_direction = _choose_new_direction()
 	timer.start()

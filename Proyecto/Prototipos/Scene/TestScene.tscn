@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Prototipos/TileMap.gd" type="Script" id=1]
+[ext_resource path="res://Prototipos/Scene/Tank/PlayerTank.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Prototipos/Scene/Brick/Brick.tscn" type="PackedScene" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
 [ext_resource path="res://Prototipos/Scene/Tank/BasicEnemy.tscn" type="PackedScene" id=5]
@@ -22,6 +23,7 @@
 0/z_index = 0
 
 [node name="TestScene" type="Node2D"]
+position = Vector2( 1, -1 )
 
 [node name="Bricks" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
@@ -35,4 +37,8 @@ container_path = NodePath("../YSort")
 [node name="YSort" type="YSort" parent="."]
 
 [node name="BasicEnemy" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 773.832, 486.635 )
+position = Vector2( 131.115, 323.725 )
+collision_layer = 2
+
+[node name="PlayerTank" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 800.111, 416.33 )

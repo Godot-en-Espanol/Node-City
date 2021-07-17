@@ -43,7 +43,7 @@ func _physics_process(_delta):
 func shoot() -> void:
 	var _new_bullet = bullet.instance()
 	_new_bullet.global_position = bullet_position.global_position
-	_new_bullet.init(current_direction, canon.position.y)
+	_new_bullet.init(current_direction, canon.position.y, self)
 	get_parent().add_child(_new_bullet)
 
 
@@ -76,3 +76,6 @@ func move_foward() -> void:
 func check_collision(_direction : Vector2) -> void:
 	var _can_move := false
 	body.look_at(body.global_position + _direction)
+
+func destroy() -> void:
+	pass

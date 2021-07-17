@@ -6,7 +6,7 @@
 [ext_resource path="res://Prototipos/Scene/Tank/TankCollision.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 32 )
+extents = Vector2( 31.0628, 31.2783 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Down"
@@ -140,7 +140,6 @@ blend_point_3/pos = Vector2( 1, 0 )
 blend_mode = 1
 
 [node name="Tank" type="Area2D"]
-collision_layer = 2
 collision_mask = 0
 script = ExtResource( 2 )
 bullet = ExtResource( 1 )
@@ -159,16 +158,22 @@ script = ExtResource( 4 )
 position = Vector2( 32, 28 )
 enabled = true
 cast_to = Vector2( 40, 0 )
+collision_mask = 5
+collide_with_areas = true
 
 [node name="RayCastMiddle" type="RayCast2D" parent="Body/CollisionDetector"]
 position = Vector2( 32, 0 )
 enabled = true
 cast_to = Vector2( 40, 0 )
+collision_mask = 5
+collide_with_areas = true
 
 [node name="RayCastLeft" type="RayCast2D" parent="Body/CollisionDetector"]
 position = Vector2( 32, -28 )
 enabled = true
 cast_to = Vector2( 40, 0 )
+collision_mask = 5
+collide_with_areas = true
 
 [node name="BulletPosition" type="Position2D" parent="."]
 position = Vector2( 43, -32 )
