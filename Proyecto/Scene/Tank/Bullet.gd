@@ -30,7 +30,6 @@ func _on_Bullet_body_entered(body) -> void:
 	queue_free()
 
 func _on_Bullet_area_entered(area) -> void:
-	print("pego")
 	if area == shooter: return
 	
 	if area.has_method("destroy"):

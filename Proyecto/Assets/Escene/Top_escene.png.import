@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Top_escene.png-0d54f6d106be8aef50f3d000d978358c.stex"
+path="res://.import/Top_escene.png-2aec34df6fdf9fff818a119e2aa6a70f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Prototipos/Assets/Escene/Top_escene.png"
-dest_files=[ "res://.import/Top_escene.png-0d54f6d106be8aef50f3d000d978358c.stex" ]
+source_file="res://Assets/Escene/Top_escene.png"
+dest_files=[ "res://.import/Top_escene.png-2aec34df6fdf9fff818a119e2aa6a70f.stex" ]
 
 [params]
 

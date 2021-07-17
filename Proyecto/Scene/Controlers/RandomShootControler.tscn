@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://RandomShootControler.gd" type="Script" id=1]
+[ext_resource path="res://Scene/Controlers/RandomShootControler.gd" type="Script" id=1]
 
 [node name="RandomShootControler" type="Node2D"]
 script = ExtResource( 1 )
