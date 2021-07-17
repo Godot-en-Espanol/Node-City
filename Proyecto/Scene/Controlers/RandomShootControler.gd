@@ -8,5 +8,6 @@ onready var timer := $Timer
 
 func _on_Timer_timeout():
 	tank.shoot()
+	rng.randomize()
 	timer.wait_time = rng.randf_range(min_time, max_time)
 	timer.start()

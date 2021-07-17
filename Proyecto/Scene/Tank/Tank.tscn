@@ -202,4 +202,8 @@ anim_player = NodePath("..")
 active = true
 parameters/blend_position = Vector2( 0.3, -0.12931 )
 
+[node name="MovingStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="ShootStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/movimiento enemigo.ogg-ae1470105d42628977c611de65717c3b.oggstr"
+
+[deps]
+
+source_file="res://SFX/TankMovement/movimiento enemigo.ogg"
+dest_files=[ "res://.import/movimiento enemigo.ogg-ae1470105d42628977c611de65717c3b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
