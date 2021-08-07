@@ -9,6 +9,9 @@ func _ready() -> void:
 	level_manager = get_node_or_null(levels_path)
 	assert(level_manager,"Level Manager missing")
 
+func _on_tank_detroyed(tank_type : String):
+	print(tank_type)
+
 func run(var name:String):
 	match name:
 		"start":

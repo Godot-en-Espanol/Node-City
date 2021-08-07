@@ -1,11 +1,12 @@
 class_name Tank
 extends Area2D
 
-signal player_destroyed
+signal tank_destroyed(tank_type)
 
 export var bullet : PackedScene
 export var hp := 1
 export var movement_speed := 200.0
+export var tank_type = "tank"
 
 var speed := 0.0
 var move_size : int
@@ -24,6 +25,7 @@ onready var shoot_sfx := $ShootStreamPlayer
 func _ready() -> void:
 	tile_size = ProjectSettings.get("game_info/tile_size")
 	# warning-ignore:integer_division
+	connect("tank_destroyed", GameManager, "_on_tank_detroyed")
 	randomize() 
 	move_size = tile_size / 4
 	_snap_position()
@@ -85,4 +87,5 @@ func check_collision(_direction : Vector2) -> void:
 	body.look_at(body.global_position + _direction)
 
 func destroy() -> void:
-	emit_signal("player_destroyed")
+	queue_free()
+	emit_signal("tank_destroyed", tank_type)

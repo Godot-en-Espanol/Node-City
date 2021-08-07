@@ -6,6 +6,7 @@
 [ext_resource path="res://SFX/Shoot/disparo Enemigo.ogg" type="AudioStream" id=4]
 
 [node name="BasicEnemy" instance=ExtResource( 1 )]
+tank_type = "BasicEnemy"
 
 [node name="BasicEnemyController" parent="." index="6" instance=ExtResource( 2 )]
 min_time = 0.5
