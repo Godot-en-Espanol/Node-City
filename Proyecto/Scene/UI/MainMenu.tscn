@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scene/UI/ButtonsPanel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scene/UI/MainMenu.gd" type="Script" id=2]
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonsPanel" parent="." instance=ExtResource( 1 )]
+
+[connection signal="load_menu" from="ButtonsPanel" to="." method="_on_ButtonsPanel_load_menu"]
