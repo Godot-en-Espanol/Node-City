@@ -12,3 +12,8 @@ func load_stage(var number:int) -> void:
 		current.queue_free()
 	current = scene_instance
 	add_child(current)
+
+func reload_current_stage():
+	assert(current,"Stage wasn't loaded")
+	current.get_tree().reload_current_scene()
+
