@@ -83,4 +83,4 @@ func check_collision(_direction : Vector2) -> void:
 	body.look_at(body.global_position + _direction)
 
 func destroy() -> void:
-	pass
+	queue_free()
