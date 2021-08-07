@@ -1,6 +1,8 @@
 class_name Tank
 extends Area2D
 
+signal player_destroyed
+
 export var bullet : PackedScene
 export var hp := 1
 export var movement_speed := 200.0
@@ -83,4 +85,4 @@ func check_collision(_direction : Vector2) -> void:
 	body.look_at(body.global_position + _direction)
 
 func destroy() -> void:
-	queue_free()
+	emit_signal("player_destroyed")
