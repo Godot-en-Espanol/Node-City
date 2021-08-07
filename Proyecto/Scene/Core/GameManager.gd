@@ -10,7 +10,10 @@ func _ready() -> void:
 	assert(level_manager,"Level Manager missing")
 
 func _on_tank_detroyed(tank_type : String):
-	print(tank_type)
+	match tank_type:
+		"PlayerTank":
+			print("hey")
+			level_manager.reload_current_stage()
 
 func run(var name:String):
 	match name:
