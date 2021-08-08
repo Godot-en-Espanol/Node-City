@@ -15,6 +15,9 @@ func _on_tank_detroyed(tank_type : String):
 			print("hey")
 			level_manager.reload_current_stage()
 
+func _on_base_destroyed():
+	level_manager.reload_current_stage()
+
 func run(var name:String):
 	match name:
 		"start":
