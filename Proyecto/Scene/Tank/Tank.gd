@@ -20,7 +20,7 @@ onready var body := $Body
 onready var bullet_position := $BulletPosition
 onready var canon := $BulletPosition/Canon
 onready var animation_tree := $AnimationPlayer/AnimationTree
-onready var shoot_sfx := $ShootStreamPlayer
+onready var soud_manager:= $SoundManger
 
 func _ready() -> void:
 	tile_size = ProjectSettings.get("game_info/tile_size")
@@ -44,12 +44,12 @@ func _physics_process(_delta):
 	if current_direction != Vector2.ZERO and !moving:
 		move_foward()
 	if speed == 0:
-		$MovingStreamPlayer.stop()
-	elif !$MovingStreamPlayer.playing:
-		$MovingStreamPlayer.play()
+		$SoundManger/MovingStreamPlayer.stop()
+	elif !$SoundManger/MovingStreamPlayer.playing:
+		$SoundManger/MovingStreamPlayer.play()
 
 func shoot() -> void:
-	shoot_sfx.play()
+	soud_manager.shoot()
 	var _new_bullet = bullet.instance()
 	_new_bullet.global_position = bullet_position.global_position
 	_new_bullet.init(current_direction, canon.position.y, self)

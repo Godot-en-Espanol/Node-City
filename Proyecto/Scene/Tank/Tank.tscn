@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scene/Tank/Bullet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scene/Tank/Tank.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Tank/spritesheet.png" type="Texture" id=3]
 [ext_resource path="res://Scene/Tank/TankCollision.gd" type="Script" id=4]
+[ext_resource path="res://Scene/Tank/TankSoundManger.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.0628, 31.2783 )
@@ -202,8 +203,11 @@ anim_player = NodePath("..")
 active = true
 parameters/blend_position = Vector2( 0.3, -0.12931 )
 
-[node name="MovingStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SoundManger" type="Node2D" parent="."]
+script = ExtResource( 5 )
 
-[node name="ShootStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MovingStreamPlayer" type="AudioStreamPlayer" parent="SoundManger"]
+
+[node name="ShootStreamPlayer" type="AudioStreamPlayer" parent="SoundManger"]
 
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
