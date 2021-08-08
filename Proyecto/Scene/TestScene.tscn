@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://TileMap.gd" type="Script" id=1]
 [ext_resource path="res://Scene/Tank/PlayerTank.tscn" type="PackedScene" id=2]
@@ -22,6 +22,12 @@
 0/shape_one_way_margin = 0.0
 0/shapes = [  ]
 0/z_index = 0
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 966.746, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 11, 545 )
 
 [node name="TestScene" type="Node2D"]
 position = Vector2( 1, -1 )
@@ -85,3 +91,39 @@ position = Vector2( 1186.43, 796.781 )
 
 [node name="PlayerBase" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 928.254, 992.057 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Bound" type="StaticBody2D" parent="Node2D"]
+position = Vector2( 960, 1098 )
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Bound"]
+shape = SubResource( 2 )
+
+[node name="Bound2" type="StaticBody2D" parent="Node2D"]
+position = Vector2( 960, -10 )
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Bound2"]
+shape = SubResource( 2 )
+
+[node name="Bound3" type="StaticBody2D" parent="Node2D"]
+position = Vector2( 1834, 764 )
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Bound3"]
+position = Vector2( 97, -219 )
+shape = SubResource( 3 )
+
+[node name="Bound4" type="StaticBody2D" parent="Node2D"]
+position = Vector2( -108, 763 )
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Bound4"]
+position = Vector2( 97, -219 )
+shape = SubResource( 3 )
