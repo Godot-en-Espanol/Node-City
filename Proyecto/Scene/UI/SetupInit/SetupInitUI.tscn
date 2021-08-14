@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scene/UI/SetupInit/SetupInitUI.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Fonts/TitleFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Fonts/ButtonFont.tres" type="DynamicFont" id=3]
+
+[node name="SetupInitUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_top = 0.045
+anchor_right = 1.0
+anchor_bottom = 0.3
+custom_fonts/font = ExtResource( 2 )
+text = "Node City"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonsPanel" type="VBoxContainer" parent="."]
+anchor_left = 0.422
+anchor_top = 0.384
+anchor_right = 0.578
+anchor_bottom = 0.616
+margin_top = 0.279999
+margin_right = 0.23999
+margin_bottom = -0.28009
+rect_min_size = Vector2( 300, 250 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Button" parent="ButtonsPanel"]
+margin_right = 300.0
+margin_bottom = 80.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+text = "Start"
+
+[node name="Options" type="Button" parent="ButtonsPanel"]
+margin_top = 84.0
+margin_right = 300.0
+margin_bottom = 165.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+text = "Options"
+
+[node name="Exit" type="Button" parent="ButtonsPanel"]
+margin_top = 169.0
+margin_right = 300.0
+margin_bottom = 250.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+text = "Exit"
+
+[connection signal="pressed" from="ButtonsPanel/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="ButtonsPanel/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="ButtonsPanel/Exit" to="." method="_on_Exit_pressed"]

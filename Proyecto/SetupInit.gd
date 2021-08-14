@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends "res://Scene/UI/BaseUI.gd"
 
 
 # Declare member variables here. Examples:
@@ -7,12 +7,10 @@ extends VBoxContainer
 
 
 # Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 #	pass
-
-
-func _on_Restart_pressed() -> void:
-	emit_signal("restart")

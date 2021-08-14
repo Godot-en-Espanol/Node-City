@@ -1,14 +1,10 @@
-extends VBoxContainer
-
-signal load_menu(menu)
+extends "res://Scene/UI/BaseUI.gd"
 
 func _on_Start_pressed() -> void:
-	emit_signal("load_menu","start")
-
+	emit_signal("game_request","start_game")
 
 func _on_Options_pressed() -> void:
-	emit_signal("load_menu","options")
-
+	emit_signal("game_request","load_options")
 
 func _on_Exit_pressed() -> void:
 	get_tree().quit()

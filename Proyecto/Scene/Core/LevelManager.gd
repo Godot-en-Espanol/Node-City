@@ -9,11 +9,14 @@ func load_stage(var number:int) -> void:
 	var scene:PackedScene = levels[number]
 	var scene_instance = scene.instance()
 	if current:
-		current.queue_free()
+		current.free()
 	current = scene_instance
 	add_child(current)
+	GameManager.emit_signal("hide_ui")
 
 func reload_current_stage():
 	assert(current,"Stage wasn't loaded")
-	current.get_tree().reload_current_scene()
+	load_stage(0)
+	
+	
 

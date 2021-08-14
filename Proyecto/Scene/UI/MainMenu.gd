@@ -1,20 +1,32 @@
 extends Control
 
+export var menus:Array
+var _menus_by_id:Dictionary
+var _current_ui:BaseUI
 
-# Declare member variables here. Examples:
-# var a: int = 2
-# var b: String = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GameManager.connect("hide_ui",self,"hide")
+	assert(menus.size()>0,"You must define one user interface at least")
+	GameManager.connect("game_event",self,"_on_game_event")
+	for menu in menus:
+		var ui:BaseUI = menu.instance()
+		ui.controller = self
+		_menus_by_id[ui.name] = ui
+	_load_menu("SetupInitUI")
 
+func _on_game_request(var request:String) -> void:
+	if request.begins_with("load"):
+		pass
+	else:
+		GameManager.run(request)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-#	pass
+func _on_game_event(var event:String) -> void:
+	match event:
+		"player_loose":
+			_load_menu("LooseUI")
 
-
-func _on_ButtonsPanel_load_menu(menu) -> void:
-	GameManager.run(menu)
+func _load_menu(var id:String):
+	if _current_ui:
+		remove_child(_current_ui)
+	var menu:BaseUI = _menus_by_id[id]
+	add_child(menu)
+	_current_ui = menu
