@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scene/Tank/Tank.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scene/Controlers/BasicEnemyController.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scene/Controlers/RandomShootControler.tscn" type="PackedScene" id=3]
-[ext_resource path="res://SFX/Shoot/disparo Enemigo.ogg" type="AudioStream" id=4]
 
 [node name="BasicEnemy" instance=ExtResource( 1 )]
 tank_type = "BasicEnemy"
@@ -14,9 +13,3 @@ max_time = 0.6
 
 [node name="RandomShootControler" parent="." index="7" instance=ExtResource( 3 )]
 max_time = 4.0
-
-[node name="MovingStreamPlayer" parent="." index="8"]
-autoplay = true
-
-[node name="ShootStreamPlayer" parent="." index="9"]
-stream = ExtResource( 4 )
