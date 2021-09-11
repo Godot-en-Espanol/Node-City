@@ -1,3 +1,4 @@
+class_name UIController
 extends Control
 
 export var menus:Array
@@ -29,4 +30,8 @@ func _load_menu(var id:String):
 		remove_child(_current_ui)
 	var menu:BaseUI = _menus_by_id[id]
 	add_child(menu)
+	menu.visible = true
 	_current_ui = menu
+
+func go_to(var next:String) -> void:
+	pass

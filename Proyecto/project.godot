@@ -23,22 +23,29 @@ _global_script_classes=[ {
 "class": "TankControler",
 "language": "GDScript",
 "path": "res://Scene/Controlers/Controler.gd"
+}, {
+"base": "Control",
+"class": "UIController",
+"language": "GDScript",
+"path": "res://Scene/UI/MainMenu.gd"
 } ]
 _global_script_class_icons={
 "BaseUI": "",
 "Tank": "",
-"TankControler": ""
+"TankControler": "",
+"UIController": ""
 }
 
 [application]
 
-config/name="Proyecto"
+config/name="Node City"
 run/main_scene="res://Scene/UI/MainMenu.tscn"
 config/icon="res://icon_espanol.png"
 
 [autoload]
 
 GameManager="*res://Scene/Core/GameManager.tscn"
+GameRequest="*res://Scene/Core/Autoload/GameRequest.gd"
 
 [display]
 

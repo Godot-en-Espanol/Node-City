@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/Fonts/TitleFont.tres" type="DynamicFont" id=1]
-[ext_resource path="res://LooseUI.gd" type="Script" id=2]
+[ext_resource path="res://Scene/UI/Loose/LooseUI.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Fonts/ButtonFont.tres" type="DynamicFont" id=3]
 
 [node name="LooseUI" type="Control"]
