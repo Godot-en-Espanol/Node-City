@@ -23,7 +23,8 @@ func _choose_new_direction()-> Vector2:
 	for direction in _directions:
 		if not tank.collision_detector.is_colliding(direction):
 			posibles_directions.append(direction)
-	
+	if posibles_directions.size() == 0:
+		return Vector2.ZERO
 	posibles_directions.shuffle()
 	
 	return posibles_directions[0]
