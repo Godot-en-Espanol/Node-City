@@ -7,31 +7,22 @@ var _current_ui:BaseUI
 
 func _ready() -> void:
 	assert(menus.size()>0,"You must define one user interface at least")
-	GameManager.connect("game_event",self,"_on_game_event")
+	_callbacks()
 	for menu in menus:
 		var ui:BaseUI = menu.instance()
 		ui.controller = self
 		_menus_by_id[ui.name] = ui
-	_load_menu("SetupInitUI")
+	load_menu("SetupInitUI")
 
-func _on_game_request(var request:String) -> void:
-	if request.begins_with("load"):
-		pass
-	else:
-		GameManager.run(request)
+func _callbacks():
+	GameManager.connect("player_loose",self,"load_menu",["LooseUI"])
+	GameManager.connect("announce_wave",self,"load_menu",["WaveUI"])
+	GameManager.connect("stage_cleared",self,"load_menu",["WinUI"])
 
-func _on_game_event(var event:String) -> void:
-	match event:
-		"player_loose":
-			_load_menu("LooseUI")
-
-func _load_menu(var id:String):
+func load_menu(var id:String):
 	if _current_ui:
 		remove_child(_current_ui)
 	var menu:BaseUI = _menus_by_id[id]
 	add_child(menu)
 	menu.visible = true
 	_current_ui = menu
-
-func go_to(var next:String) -> void:
-	pass

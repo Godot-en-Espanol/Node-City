@@ -12,7 +12,6 @@ func load_stage(var number:int) -> void:
 		current.free()
 	current = scene_instance
 	add_child(current)
-	GameManager.emit_signal("hide_ui")
 
 func reload_current_stage():
 	assert(current,"Stage wasn't loaded")

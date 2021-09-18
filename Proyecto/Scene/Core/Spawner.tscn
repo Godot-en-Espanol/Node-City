@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scene/Spawner.gd" type="Script" id=1]
 [ext_resource path="res://Scene/Tank/BasicEnemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scene/Core/Resources/TestSceneConfig.tres" type="Resource" id=3]
 
-[node name="Spawner" type="Node2D"]
+[node name="Spawner" type="YSort"]
 script = ExtResource( 1 )
 tank_scene = ExtResource( 2 )
+stage_config = ExtResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

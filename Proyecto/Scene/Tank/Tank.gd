@@ -25,7 +25,8 @@ onready var soud_manager:= $SoundManger
 func _ready() -> void:
 	tile_size = ProjectSettings.get("game_info/tile_size")
 	# warning-ignore:integer_division
-	connect("tank_destroyed", GameManager, "_on_tank_detroyed")
+#	connect("tank_destroyed", GameManager, "_on_tank_detroyed")
+	GameManager.war_director.add_tank(self)
 	randomize() 
 	move_size = tile_size / 4
 	_snap_position()
