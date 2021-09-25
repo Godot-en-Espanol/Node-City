@@ -32,7 +32,6 @@ func _on_Bullet_body_entered(body) -> void:
 
 func _on_Bullet_area_entered(area) -> void:
 	if area == shooter: 
-		queue_free()
 		return
 	if area.has_method("destroy") and area.get_groups()[0] != get_groups()[0]:
 		area.destroy()
