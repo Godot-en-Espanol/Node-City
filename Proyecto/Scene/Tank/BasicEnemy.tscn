@@ -4,7 +4,9 @@
 [ext_resource path="res://Scene/Controlers/BasicEnemyController.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scene/Controlers/RandomShootControler.tscn" type="PackedScene" id=3]
 
-[node name="BasicEnemy" instance=ExtResource( 1 )]
+[node name="BasicEnemy" groups=[
+"enemy",
+] instance=ExtResource( 1 )]
 tank_type = "BasicEnemy"
 
 [node name="BasicEnemyController" parent="." index="6" instance=ExtResource( 2 )]

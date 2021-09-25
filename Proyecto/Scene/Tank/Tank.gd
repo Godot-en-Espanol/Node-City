@@ -13,6 +13,7 @@ var move_size : int
 var tile_size : int
 var moving := false
 var current_direction := Vector2.ZERO setget change_direction
+var _destroyed := false
 
 onready var tween := $Tween
 onready var collision_detector := $Body/CollisionDetector
@@ -25,21 +26,16 @@ onready var soud_manager:= $SoundManger
 func _ready() -> void:
 	tile_size = ProjectSettings.get("game_info/tile_size")
 	# warning-ignore:integer_division
-#	connect("tank_destroyed", GameManager, "_on_tank_detroyed")
 	GameManager.war_director.add_tank(self)
 	randomize() 
 	move_size = tile_size / 4
 	_snap_position()
-	
-
 
 func _on_Tween_tween_all_completed() -> void:
 	moving = false
 
-
 func _snap_position() -> void:
 	position = position.snapped(Vector2.ONE * move_size)
-
 
 func _physics_process(_delta):
 	if current_direction != Vector2.ZERO and !moving:
@@ -53,6 +49,7 @@ func shoot() -> void:
 	soud_manager.shoot()
 	var _new_bullet = bullet.instance()
 	_new_bullet.global_position = bullet_position.global_position
+	_new_bullet.add_to_group(self.get_groups()[0])
 	_new_bullet.init(current_direction, canon.position.y, self)
 	get_parent().add_child(_new_bullet)
 
@@ -88,5 +85,8 @@ func check_collision(_direction : Vector2) -> void:
 	body.look_at(body.global_position + _direction)
 
 func destroy() -> void:
+	if _destroyed:
+		return
 	queue_free()
 	emit_signal("tank_destroyed", tank_type)
+	_destroyed = true
